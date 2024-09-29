@@ -21,7 +21,7 @@ jobs:
     - name: Deploy to VM
       run: |
         ssh -o StrictHostKeyChecking=no valian@0.tcp.ngrok.io -p 17336 << 'EOF'
-        cd /home/valian/node-hello
+        cd /home/valian/node-helloworld
         git pull origin main
         docker-compose down
         docker-compose up -d --build
