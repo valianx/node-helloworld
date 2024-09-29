@@ -20,9 +20,9 @@ jobs:
 
     - name: Deploy to VM
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p ${{ secrets.SSH_PORT }} << 'EOF'
-        cd /home/valian/node-helloworld
-        git pull origin main
-        docker-compose down
-        docker-compose up -d --build
-        EOF
+        ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -C "
+          cd /home/valian/node-helloworld &&
+          git pull origin main &&
+          docker-compose down &&
+          docker-compose up -d --build
+        "
