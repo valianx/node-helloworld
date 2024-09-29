@@ -20,7 +20,7 @@ jobs:
 
     - name: Deploy to VM
       run: |
-        ssh -o StrictHostKeyChecking=no valian@${{ secrets.SSH_HOST }} -p 17336 << 'EOF'
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p 17336 << 'EOF'
         cd /home/valian/node-helloworld
         git pull origin main
         docker-compose down
